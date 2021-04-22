@@ -1,0 +1,73 @@
+{% extends "bootstrap/base.html" %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="shortcut icon" href="{{ url_for('static', filename = 'conesa.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static', filename = 'conesa.png') }}" type="image/x-icon">
+{% endblock %}
+
+{% block title %}Hola {{ nombre }}{% endblock %}
+
+{% block navbar %}
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Conesa inc.</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Inicio</a></li>
+                {% if 'username' in session %}
+                
+                <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"> Clientes 
+                            <span class="caret"></span>
+                        </a> 
+                    <ul class="dropdown-menu">
+                        <li><a href="/listado_de_clientes" class="dropdown-item">Listado de clientes</a></li>
+                        <li><a href="/cargar_cliente" class="dropdown-item">Cargar nuevo cliente</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"> Consultas 
+                            <span class="caret"></span>
+                        </a> 
+                    <ul class="dropdown-menu">
+                        <li><a href="/busqueda_pais" class="dropdown-item">Buscar por pais</a> </li>
+                        <li><a href="/edad_cliente" class="dropdown-item">Buscar por edad</a> </li>
+                        <li><a href="/fecha_cliente" class="dropdown-item">Buscar por fecha</a> </li>
+                    </ul>
+                </li>
+                <li><a href="/sobre">Sobre</a></li>
+                {% else %}
+                <li><a href="/sobre">Sobre</a></li>
+                {% endif %}
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if 'username' in session %}
+                <li float: right><a href="/logout">Salir</a></li>
+                {% else %}
+                <li><a href="/ingresar">Ingresar</a></li>
+                <li><a href="/registrar">Registrarse</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% block page_content %}{% endblock %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{% endblock %}

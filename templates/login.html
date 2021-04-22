@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Ingrese{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    {{ wtf.quick_form(formulario) }}
+<a href="{{ url_for('registrar') }}" class="btn btn-primary pull-right">Registrarse</a>
+</div>
+{% endblock %}

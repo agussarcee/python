@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+
+{% block title %}Listado de clientes{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>Listado de clientes</h1>
+    <p>La cantidad de clientes son {{cantidad}}</p>
+</div>
+    
+<table class="table table-striped table-bordered" >
+    <tr>
+        <th>Nombre</th>
+        <th>Edad</th>
+        <th>Dirección</th>
+        <th>Pais</th>
+        <th>Documento</th>
+        <th>Fecha</th>
+        <th>Correo electronico</th>
+        <th>Trabajo</th>
+    </tr>
+    
+    {% for tabla in esto %}
+    <tr>
+        <td>{{ tabla["Nombre"] }}</td>
+        <td>{{ tabla["Edad"] }}</td>
+        <td>{{ tabla["Dirección"] }}</td>
+        <td>{{ tabla["País"] }}</td>
+        <td>{{ tabla["Documento"] }}</td>
+        <td>{{ tabla["Fecha Alta"] }}</td>
+        <td>{{ tabla["Correo Electrónico"] }}</td>
+        <td>{{ tabla["Trabajo"] }}</td>
+    </tr>
+    {% endfor %}
+    
+</table>
+
+{% endblock %}

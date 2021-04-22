@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Buscador{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+        <h1>Buscador</h1>
+        <h2>Clientes por país</h2>
+</div>
+<div>
+        {{ wtf.quick_form(form) }}
+</div>
+
+{% endblock %}
